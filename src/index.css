@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --red-deep: #7a0a0a;
+  --red-rich: #8B0000;
+  --red-bright: #A52A2A;
+  --gold-luxury: #B8860B;
+  --gold-primary: #D4AF37;
+  --gold-light: #F4E4BC;
+  --gold-shine: #FFD700;
+  --cream: #FFF8E7;
+  --ink: #1a0a0a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(139, 0, 0, 0.4) 0%, transparent 60%),
+    linear-gradient(180deg, #5c0808 0%, #8B0000 40%, #7a0a0a 70%, #5c0808 100%);
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}

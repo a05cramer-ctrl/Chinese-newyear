@@ -1,0 +1,795 @@
+/* ========== LAYOUT ========== */
+.app {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ========== ENTRY PAGE ========== */
+.entry-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entry-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.entry-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.15em;
+  color: var(--gold-shine);
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.entry-image {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+.entry-button {
+  padding: 1.25rem 3.5rem;
+  font-size: 1.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-shine));
+  color: var(--ink);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+  transition: all 0.3s ease;
+}
+
+.entry-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.5);
+}
+
+/* ========== DECORATIVE PATTERN ========== */
+.decorative-pattern {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pattern-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(220, 20, 60, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #6b0a0a 0%, #8B0000 30%, #7a0a0a 70%, #5c0808 100%);
+}
+
+.pattern-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+/* ========== GOLD PARTICLES ========== */
+.gold-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.gold-particle {
+  position: absolute;
+  left: var(--x, 50%);
+  bottom: -20px;
+  width: var(--size, 3px);
+  height: var(--size, 3px);
+  background: radial-gradient(circle, #FFD700, #D4AF37);
+  border-radius: 50%;
+  animation: particle-drift var(--duration, 5s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0.7;
+}
+
+@keyframes particle-drift {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.4; }
+  100% {
+    transform: translateY(-100vh) translateX(20px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ========== FIRECRACKER SPARKS ========== */
+.firecracker-sparks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fc-group {
+  position: absolute;
+  top: 12%;
+}
+
+.fc-left { left: 8%; }
+.fc-right { right: 8%; transform: scaleX(-1); }
+
+.fc-string {
+  width: 2px;
+  height: 35px;
+  background: linear-gradient(180deg, #D4AF37, #8B7355);
+  margin: 0 auto;
+}
+
+.fc-body {
+  width: 10px;
+  height: 45px;
+  background: repeating-linear-gradient(90deg, #DC143C, #DC143C 2px, #FFD700 2px, #FFD700 4px);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.fc-burst {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+}
+
+.fc-spark {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #FFD700;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  animation: fc-burst 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+
+.fc-spark:nth-child(1) { --fx: 25px; --fy: 0; }
+.fc-spark:nth-child(2) { --fx: 18px; --fy: -18px; }
+.fc-spark:nth-child(3) { --fx: 0; --fy: -25px; }
+.fc-spark:nth-child(4) { --fx: -18px; --fy: -18px; }
+.fc-spark:nth-child(5) { --fx: -25px; --fy: 0; }
+.fc-spark:nth-child(6) { --fx: -18px; --fy: 18px; }
+.fc-spark:nth-child(7) { --fx: 0; --fy: 25px; }
+.fc-spark:nth-child(8) { --fx: 18px; --fy: 18px; }
+.fc-spark:nth-child(9) { --fx: 12px; --fy: -12px; }
+.fc-spark:nth-child(10) { --fx: -12px; --fy: -12px; }
+.fc-spark:nth-child(11) { --fx: -12px; --fy: 12px; }
+.fc-spark:nth-child(12) { --fx: 12px; --fy: 12px; }
+
+@keyframes fc-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--fx, 15px)), calc(-50% + var(--fy, -15px))) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ========== LANTERNS ========== */
+.lanterns {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lantern {
+  position: absolute;
+  animation: lantern-sway 5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.lantern-1 { top: 10%; left: 6%; }
+.lantern-2 { top: 8%; right: 10%; animation-delay: 0.3s; }
+.lantern-3 { top: 22%; left: 12%; animation-delay: 0.6s; }
+.lantern-4 { top: 18%; right: 6%; animation-delay: 0.2s; }
+.lantern-5 { bottom: 28%; left: 10%; animation-delay: 0.5s; }
+.lantern-6 { bottom: 22%; right: 12%; animation-delay: 0.4s; }
+
+@keyframes lantern-sway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+.lantern-hook {
+  width: 4px;
+  height: 12px;
+  background: linear-gradient(180deg, #8B7355, #D4AF37);
+  margin: 0 auto 2px;
+  border-radius: 2px;
+}
+
+.lantern-cap {
+  width: 18px;
+  height: 6px;
+  background: linear-gradient(90deg, #8B7355, #D4AF37, #8B7355);
+  margin: 0 auto 2px;
+  border-radius: 2px;
+}
+
+.lantern-body {
+  width: 22px;
+  height: 28px;
+  background: linear-gradient(180deg, #DC143C, #8B0000);
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(220, 20, 60, 0.35), inset 0 0 12px rgba(255, 215, 0, 0.15);
+}
+
+.lantern-glow {
+  position: absolute;
+  inset: 3px;
+  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.25), transparent 70%);
+  border-radius: 2px;
+  animation: lantern-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes lantern-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.lantern-tassel {
+  width: 2px;
+  height: 12px;
+  background: linear-gradient(180deg, #D4AF37, #8B7355);
+  margin: 2px auto 0;
+  border-radius: 1px;
+}
+
+/* ========== PLUM BLOSSOMS ========== */
+.plum-blossoms {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.plum-blossom {
+  position: absolute;
+  left: var(--x, 20%);
+  top: var(--y, 20%);
+  width: var(--size, 14px);
+  height: var(--size, 14px);
+  animation: blossom-float 6s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.petal {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  background: radial-gradient(ellipse at center, #FFF8E7, #F4E4BC);
+  border-radius: 50% 50% 50% 0;
+  top: 30%;
+  left: 30%;
+  transform-origin: center center;
+  opacity: 0.95;
+}
+
+.p1 { transform: rotate(0deg) translateY(-30%); }
+.p2 { transform: rotate(72deg) translateY(-30%); }
+.p3 { transform: rotate(144deg) translateY(-30%); }
+.p4 { transform: rotate(216deg) translateY(-30%); }
+.p5 { transform: rotate(288deg) translateY(-30%); }
+
+.blossom-center {
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  background: #D4AF37;
+  border-radius: 50%;
+  top: 40%;
+  left: 40%;
+}
+
+@keyframes blossom-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+  50% { transform: translateY(-5px) rotate(5deg); opacity: 1; }
+}
+
+/* ========== HEADER ========== */
+.header {
+  position: relative;
+  z-index: 10;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold-shine);
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.header-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid var(--gold-primary);
+  border-radius: 6px;
+  color: var(--gold-light);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.header-btn:hover {
+  background: rgba(212, 175, 55, 0.35);
+  border-color: var(--gold-shine);
+}
+
+/* ========== HERO ========== */
+.main {
+  position: relative;
+  z-index: 5;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.hero-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== HORSE MEDALLION ========== */
+.medallion {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin-bottom: 2rem;
+}
+
+.medallion-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.medallion-outer {
+  background: linear-gradient(135deg, #D4AF37, #FFD700, #B8860B);
+  padding: 8px;
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 0.4),
+    inset 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.medallion-pattern {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: 
+    repeating-conic-gradient(from 0deg, transparent 0deg 10deg, rgba(139, 0, 0, 0.3) 10deg 20deg);
+  opacity: 0.3;
+}
+
+.medallion-inner {
+  inset: 20px;
+  background: linear-gradient(180deg, #8B0000, #5c0808);
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.horse-svg {
+  width: 85%;
+  height: 85%;
+}
+
+.medallion-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+/* ========== TYPOGRAPHY ========== */
+.hero-headline {
+  font-family: 'Ma Shan Zheng', 'Noto Serif SC', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+.headline-main {
+  display: block;
+}
+
+.headline-divider {
+  color: var(--gold-primary);
+  font-weight: 300;
+  font-size: 0.9em;
+}
+
+.hero-subheadline {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: var(--gold-shine);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  font-style: italic;
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  color: var(--cream);
+  opacity: 0.9;
+  letter-spacing: 0.2em;
+}
+
+/* ========== SYMBOLIC ELEMENTS ========== */
+.hero-symbols {
+  flex: 1;
+  min-width: 0;
+  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-left .symbolic-elements {
+  align-items: flex-start;
+}
+
+.hero-right .symbolic-elements {
+  align-items: flex-end;
+}
+
+.symbolic-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Red envelope */
+.symbol-envelope {
+  position: relative;
+  width: 50px;
+  height: 65px;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 30px solid #DC143C;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.envelope-body {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 45px;
+  background: linear-gradient(180deg, #B22222, #8B0000);
+  border-radius: 0 0 4px 4px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.symbol-char {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Ma Shan Zheng', 'Noto Serif SC', cursive;
+  font-size: 1.5rem;
+  color: var(--gold-shine);
+  z-index: 1;
+}
+
+/* Gold coin */
+.symbol-coin {
+  position: relative;
+  width: 45px;
+  height: 45px;
+}
+
+.coin-face {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFD700, #D4AF37, #B8860B);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(184, 134, 11, 0.5);
+}
+
+.coin-char {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Ma Shan Zheng', 'Noto Serif SC', cursive;
+  font-size: 1.2rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Knot */
+.symbol-knot {
+  width: 40px;
+  height: 40px;
+}
+
+.knot-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+}
+
+/* Mini lantern */
+.symbol-mini-lantern {
+  width: 25px;
+  height: 35px;
+}
+
+.mini-lantern-body {
+  width: 25px;
+  height: 30px;
+  background: linear-gradient(180deg, #DC143C, #8B0000);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+}
+
+/* ========== BLESSINGS ========== */
+.blessings {
+  position: relative;
+  z-index: 5;
+  padding: 3rem 2rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blessing-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.blessing-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  min-width: 100px;
+  transition: all 0.3s ease;
+}
+
+.blessing-item:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.blessing-icon {
+  font-size: 2rem;
+}
+
+.blessing-item span:last-child {
+  font-size: 0.95rem;
+  color: var(--gold-light);
+}
+
+/* ========== FACTS ========== */
+.facts {
+  position: relative;
+  z-index: 5;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.facts-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+}
+
+.facts-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--cream);
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+
+.facts-text:last-child {
+  margin-bottom: 0;
+}
+
+/* ========== COUNTRIES ========== */
+.countries {
+  position: relative;
+  z-index: 5;
+  padding: 3rem 2rem;
+}
+
+.countries-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  color: var(--gold-light);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.country-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.country-card:hover {
+  border-color: var(--gold-primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.country-flag {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.country-name {
+  font-size: 1.15rem;
+  color: var(--gold-shine);
+  margin-bottom: 0.5rem;
+}
+
+.country-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--cream);
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  position: relative;
+  z-index: 5;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-text {
+  font-family: 'Ma Shan Zheng', 'Noto Serif SC', cursive;
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  margin-bottom: 0.25rem;
+}
+
+.footer-sub {
+  font-size: 0.9rem;
+  color: var(--cream);
+  opacity: 0.8;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .hero-symbols {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .blessing-grid {
+    gap: 1rem;
+  }
+
+  .blessing-item {
+    min-width: 80px;
+    padding: 0.75rem 1rem;
+  }
+}
