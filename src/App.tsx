@@ -31,6 +31,22 @@ function App() {
     }
   }
 
+  const CONTRACT_ADDRESS = '3NJKi1ucWWSCQQL89G5KU17M7PhGBq6qbSMNwMDXpump'
+
+  const handleCopyCA = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTRACT_ADDRESS)
+    } catch {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea')
+      textArea.value = CONTRACT_ADDRESS
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+    }
+  }
+
   return (
     <>
       <audio ref={audioRef} src={backgroundMusic} />
@@ -58,8 +74,8 @@ function App() {
         <h1 className="header-title">$CHNEWY</h1>
         <div className="header-buttons">
           <button type="button" className="header-btn" onClick={handleStopMusic}>Stop Music</button>
-          <button className="header-btn">COPY CA</button>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="header-btn">X</a>
+          <button type="button" className="header-btn" onClick={handleCopyCA}>COPY CA</button>
+          <a href="https://x.com/chineseN_dev" target="_blank" rel="noopener noreferrer" className="header-btn">X</a>
         </div>
       </header>
 
